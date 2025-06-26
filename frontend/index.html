@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Chat Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Auto theme detection + remember user preference -->
+  <script>
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    } else {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="chat-wrapper">
+    <header class="chat-header">
+      <h2>AI Assistant</h2>
+
+      <!-- Right side buttons grouped -->
+      <div class="header-buttons">
+        <!-- Dark/Light Theme Toggle -->
+        <button id="darkToggle" title="Toggle Theme">🌓</button>
+
+        <!-- Share Button -->
+        <div class="share-container">
+          <button class="share-toggle" onclick="toggleSharePopup()">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/share-rounded.png" alt="Share">Share
+          </button>
+
+          <!-- Share Popup -->
+          <div id="sharePopup" class="share-popup">
+            <a href="https://wa.me/?text=Check%20this%20chatbot:%20https://127.0.0.1:5500" target="_blank" title="WhatsApp">
+              <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp" />
+            </a>
+            <a href="mailto:?subject=Check%20this%20AI%20Assistant&body=Try%20it:%20https://127.0.0.1:5500" title="Gmail">
+              <img src="https://img.icons8.com/color/48/gmail-new.png" alt="Gmail" />
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://127.0.0.1:5500" target="_blank" title="Facebook">
+              <img src="https://img.icons8.com/fluency/48/facebook-new.png" alt="Facebook" />
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://127.0.0.1:5500&text=Check%20this%20chatbot" target="_blank" title="Twitter">
+              <img src="https://img.icons8.com/color/48/twitter--v1.png" alt="Twitter" />
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://127.0.0.1:5500" target="_blank" title="LinkedIn">
+              <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn" />
+            </a>
+            <a href="#" onclick="copyLink()" title="Copy Link">
+              <img src="https://img.icons8.com/material-rounded/48/000000/copy.png" alt="Copy Link" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="chatHistory" class="chat-history"></div>
+
+    <form id="textForm" class="chat-form">
+      <input id="textInput" type="text" placeholder="Type your message..." autocomplete="off" />
+      <button type="submit">➤</button>
+      <button type="button" onclick="startRecording()" class="mic-btn">
+        <img src="https://img.icons8.com/ios-filled/24/ffffff/microphone.png" alt="Mic" />
+      </button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
